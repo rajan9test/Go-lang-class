@@ -1,0 +1,50 @@
+Vocal Labs – Backend Developer (Core Tech) hiring process.
+
+As this is a technical role, we would like the training to cover the following areas, with specific emphasis on the technologies mentioned in the company's JD.
+
+Core Technologies & Skills
+1. Programming & Backend Development
+
+Go (Golang) – core concepts and backend development
+REST API development
+HTTP, JSON and request/response handling
+GraphQL
+Authentication and authorization
+2. Databases
+
+SQL and database fundamentals
+PostgreSQL / MySQL
+MongoDB
+Redis and caching concepts
+Database design and queries
+3. Backend Engineering Concepts
+
+Data Structures & Algorithms
+Object-Oriented Programming
+System Design
+Scalable backend architecture
+Concurrency and Goroutines in Go
+Error handling
+Debugging and troubleshooting
+Performance optimisation
+Unit testing and integration testing
+4. Development Tools & Deployment
+
+Git and GitHub
+Linux and command-line basics
+Docker
+CI/CD fundamentals
+Basics of cloud platforms – AWS / Azure / GCP
+Vocal Labs – Mandatory Skills
+The students should receive strong hands-on preparation specifically in:
+
+Go (Golang)
+API Development
+Debugging
+The following areas are listed as good-to-have skills in the JD and should also be covered:
+
+GraphQL
+System Design
+Performance Optimisation
+Git
+It would be particularly helpful if the training includes a hands-on backend project in Go, covering API development, database integration, error handling, debugging and basic testing. Students should also be encouraged to explain their code and technical decisions, as this will help them prepare for the technical evaluation.
