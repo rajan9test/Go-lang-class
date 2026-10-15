@@ -40,3 +40,5 @@ func (s *UserSerice) Register(name string, email string, pass string)(model.User
 
 	 return  user , nil
 }
+
+// Task := login , updateuser, delete user , getall user 

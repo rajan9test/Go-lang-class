@@ -31,3 +31,7 @@ func (s *UserStore) Create(user model.User) (model.User , error){
 
 	return user,nil
 }
+
+// Task := GetAll, GetByEmail , update , delete,  
+
+func (s *UserStore) GetByEmail()

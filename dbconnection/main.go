@@ -19,7 +19,6 @@ func main() {
 
 	userStore := store.NewUserStore(database)
 	userServices := service.NewUserServices(userStore)
-
 	user, err := userServices.Register("rajan", "rajan@gmail.com", "hello@123")
 
 	if err != nil {
