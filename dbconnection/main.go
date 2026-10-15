@@ -17,7 +17,7 @@ func main() {
 	}
 	db.MigrateinPostgres(database)
 
-	userStore := userstore.NewUserStore(database);
+	userStore := store.NewUserStore(database);
 
 	atul := model.User{
 		Name: "Atul",
