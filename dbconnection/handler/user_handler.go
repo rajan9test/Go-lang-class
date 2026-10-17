@@ -31,7 +31,7 @@ func Register(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	Database, err := db.Connect()
+	Database, err := db.Connect()  // 3 way handshaking principal 
 
 	if err != nil {
 		log.Println("database  failed ", err)

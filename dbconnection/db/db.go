@@ -8,8 +8,14 @@ import (
 	_ "github.com/jackc/pgx/v5/stdlib"
 	_ "modernc.org/sqlite"
 )
+
+var Database *sql.DB
+
+
 func Connect() (*sql.DB , error){
      
+
+	// singleton patten   => when ever you server run and 
 
 	// task :- we have to impmlement env helper fuction and this connection string should be in .env
 	dns := "postgresql://neondb_owner:npg_cGPzB58UeklI@ep-billowing-glade-b4jhb8lj-pooler.c-6.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
