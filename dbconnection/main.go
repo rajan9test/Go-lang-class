@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"golang/db"
 	"golang/service"
@@ -8,6 +9,12 @@ import (
 	"log"
 	"net/http"
 )
+
+type registerRequest struct {
+	Name     string `json: "name"`
+	Email    string `json: "email"`
+	Password string `json: "password"`
+}
 
 func main() {
 	database, err := db.Connect()
@@ -19,7 +26,24 @@ func main() {
 
 	userStore := store.NewUserStore(database)
 	userServices := service.NewUserServices(userStore)
-	user, err := userServices.Register("rajan", "rajan@gmail.com", "hello@123")
+
+	router := http.NewServeMux()
+
+	router.HandleFunc("/register", func(w http.ResponseWriter, r *http.Request) {
+
+		var req registerRequest
+
+		err := json.NewDecoder(r.Body).Decode(&req)
+
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+			w.Header().Set("Content-Type" , "application/json")
+			w.Write([]byte(
+				(`hello the json formate are not sutable `)
+			))
+		}
+
+	})
 
 	if err != nil {
 		fmt.Println(err)
