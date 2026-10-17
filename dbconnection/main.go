@@ -69,6 +69,7 @@ func main() {
 	}
 	server := &http.Server{
 		Addr: ":8080",
+		Handler: router,
 	}
 
 	log.Println("server is running on the port of :8080")
