@@ -2,6 +2,7 @@ package service
 
 import (
 	"fmt"
+	"golang/helper"
 	"golang/model"
 	"golang/userstore"
 	"strings"
@@ -22,7 +23,7 @@ func NewUserServices(userStore *store.UserStore) *UserSerice{
 func (s *UserSerice) Register(name string, email string, pass string)(model.User, error){
 	  
      name = strings.TrimSpace(name)
-	 email = strings.TrimSpace(email)
+	 email, err := helper.EmailNormalization(email)
 
 	 if name == "" || email == "" || pass == ""{
 		return  model.User{} , fmt.Errorf("name , email and password is required")
