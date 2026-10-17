@@ -1,35 +1,17 @@
 package main
 
 import (
-	"fmt"
-	"golang/db"
+	"database/sql"
 	"golang/routes"
-	"golang/service"
-	store "golang/userstore"
 	"log"
 	"net/http"
 )
 
+var Database *sql.DB
+
 func main() {
-	database, err := db.Connect()
 
-	if err != nil {
-		log.Println("database  failed ", err)
-	}
-	db.MigrateinPostgres(database)
-
-	userStore := store.NewUserStore(database)
-	userServices := service.NewUserServices(userStore)
-
-	router := routes.UserRouter(userServices)
-
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	if err != nil {
-		fmt.Println(err)
-	}
+	router := routes.UserRouter()
 	server := &http.Server{
 		Addr:    ":8080",
 		Handler: router,
@@ -37,7 +19,7 @@ func main() {
 
 	log.Println("server is running on the port of :8080")
 
-	err = server.ListenAndServe()
+	err := server.ListenAndServe()
 
 	if err != nil {
 		log.Fatal(err)
