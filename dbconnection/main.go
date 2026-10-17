@@ -38,17 +38,28 @@ func main() {
 		if err != nil {
 			w.WriteHeader(http.StatusBadRequest)
 			w.Header().Set("Content-Type" , "application/json")
-			w.Write([]byte(
-				(`hello the json formate are not sutable `)
-			))
+			w.Write([]byte(`this is the wrong json formate`))
 		}
+        
+		user , err := userServices.Register(req.Name , req.Email , req.Password)
+
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+			w.Header().Set("Content-Type" , "application/json")
+			json.NewEncoder(w).Encode(err)
+		}
+        
+		w.WriteHeader(http.StatusCreated)
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(user)
+		
+
 
 	})
 
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println(user)
 
 	if err != nil {
 		fmt.Println(err)
