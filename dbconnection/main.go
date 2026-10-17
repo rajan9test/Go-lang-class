@@ -6,6 +6,7 @@ import (
 	"golang/db"
 	"golang/service"
 	store "golang/userstore"
+	"golang/utils"
 	"log"
 	"net/http"
 )
@@ -36,24 +37,26 @@ func main() {
 		err := json.NewDecoder(r.Body).Decode(&req)
 
 		if err != nil {
-			w.WriteHeader(http.StatusBadRequest)
-			w.Header().Set("Content-Type" , "application/json")
-			w.Write([]byte(`this is the wrong json formate`))
+			// w.WriteHeader(http.StatusBadRequest)
+			// w.Header().Set("Content-Type" , "application/json")
+			// w.Write([]byte(`this is the wrong json formate`))
+			utils.Error(w , http.StatusBadRequest, err)
 		}
         
 		user , err := userServices.Register(req.Name , req.Email , req.Password)
 
 		if err != nil {
-			w.WriteHeader(http.StatusBadRequest)
-			w.Header().Set("Content-Type" , "application/json")
-			json.NewEncoder(w).Encode(err)
+			// w.WriteHeader(http.StatusBadRequest)
+			// w.Header().Set("Content-Type" , "application/json")
+			// json.NewEncoder(w).Encode(err)
+
+			utils.Error(w , http.StatusBadRequest, err)
 		}
         
-		w.WriteHeader(http.StatusCreated)
-		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(user)
-		
-
+		// w.WriteHeader(http.StatusCreated)
+		// w.Header().Set("Content-Type", "application/json")
+		// json.NewEncoder(w).Encode(user)
+		utils.Response(w, http.StatusCreated, user)
 
 	})
 
